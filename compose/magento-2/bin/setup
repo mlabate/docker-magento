@@ -4,7 +4,7 @@ BASE_URL=${1:-magento2.test}
 bin/stop
 
 # get rid of vertex/module-tax, not required and causes checksum errors on composer install
-# https://github.com/markshust/docker-magento/issues/135
+# https://github.com/mlabate/docker-magento/issues/135
 # prevent double or more insertion
 if ! grep -qF '"replace": { "vertex/module-tax": "*" }' src/composer.json; then
     sed -e 's/"conflict": {/"replace": { "vertex\/module-tax": "*" },\ "conflict": {/' src/composer.json > composer.json && mv composer.json src/composer.json
@@ -19,10 +19,10 @@ bin/copytocontainer --all
 
 bin/clinotty chmod u+x bin/magento
 
-if hash composer 2>/dev/null; then
-    PUBLIC_KEY="$(composer config -gl | grep '\[http-basic.repo.magento.com.username\]' | cut -c40-)"
-    PRIVATE_KEY="$(composer config -gl | grep '\[http-basic.repo.magento.com.password\]' | cut -c40-)"
-fi
+#if hash composer 2>/dev/null; then
+    PUBLIC_KEY="$(bin/composer config -gl | grep '\[http-basic.repo.magento.com.username\]' | cut -c40-)"
+    PRIVATE_KEY="$(bin/composer config -gl | grep '\[http-basic.repo.magento.com.password\]' | cut -c40-)"
+#fi
 
 if [ -z "$PUBLIC_KEY" ] || [ -z "$PRIVATE_KEY" ]; then
     exec < /dev/tty

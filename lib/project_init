@@ -1,0 +1,26 @@
+#!/bin/bash
+DOMAIN=${1:-magento2.test}
+VERSION=${2:-2.3.2}
+
+if [ -d "sites/$DOMAIN" ]; then
+  echo "Installing '${VERSION}' in dir 'sites/${DOMAIN}'..."
+  rm -R sites/$DOMAIN/src/*
+else
+  echo "Creating dir 'sites/${DOMAIN}'..."
+  mkdir sites/$DOMAIN
+  echo "Copying base files..."
+  cp -R compose/magento-2/* sites/$DOMAIN
+  cp -R compose/magento-2/.vscode sites/$DOMAIN
+  echo "Installing '${VERSION}'..."
+fi
+
+cd sites/$DOMAIN
+
+bin/download $VERSION
+
+cp compose/magento-2/src/auth.json sites/$DOMAIN/src/
+
+echo "Your system password has been requested to add an entry to /etc/hosts..."
+echo "127.0.0.1 $DOMAIN" | sudo tee -a /etc/hosts
+
+bin/setup $DOMAIN

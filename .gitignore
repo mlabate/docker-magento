@@ -1,0 +1,5 @@
+/.idea/
+/.DS_Store
+compose/magento-2/.DS_Store
+sites/*
+compose/magento-2/src/auth.json

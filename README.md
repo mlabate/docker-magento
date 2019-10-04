@@ -1,7 +1,7 @@
-<h1 align="center">markshust/docker-magento</h1> 
+<h1 align="center">docker-magento</h1> 
 
 <div align="center">
-  <p>Mark Shust's Docker Configuration for Magento</p>
+  <p>Docker Configuration for Magento</p>
   <img src="https://img.shields.io/badge/magento-2.X-brightgreen.svg?logo=magento&longCache=true&style=flat-square" alt="Supported Magento Versions" />
   <a href="https://hub.docker.com/r/markoshust/magento-nginx/" target="_blank"><img src="https://img.shields.io/docker/pulls/markoshust/magento-nginx.svg?label=nginx%20docker%20pulls" alt="Docker Hub Pulls - Nginx" /></a>
   <a href="https://hub.docker.com/r/markoshust/magento-php/" target="_blank"><img src="https://img.shields.io/docker/pulls/markoshust/magento-php.svg?label=php%20docker%20pulls" alt="Docker Hub Pulls - PHP" /></a>
@@ -11,7 +11,6 @@
 
 ## Table of contents
 
-- [Free Course](#free-course)
 - [Docker Hub](#docker-hub)
 - [Usage](#usage)
 - [Prerequisites](#prerequisites)
@@ -21,51 +20,42 @@
 - [Credits](#credits)
 - [License](#license)
 
-## Free Course
-
-I created a free screencast course which details the basic usage of this project:
-
-<a href="https://m.academy/p/setup-magento-2-development-environment-docker" target="_blank">
-<img src="https://raw.githubusercontent.com/markshust/docker-magento/master/docs/course.png" alt="Setup a Magento 2 Development Environment with Docker"><br />
-Setup a Magento 2 Development Environment with Docker
-</a>
-
 ## Docker Hub
 
 View Dockerfiles:
 
 - [markoshust/magento-nginx (Docker Hub)](https://hub.docker.com/r/markoshust/magento-nginx/)
   - 1.13
-      - [`latest`, `1.13`, `1.13-7`](https://github.com/markshust/docker-magento/tree/master/images/nginx/1.13)
-      - [`1.13-6`](https://github.com/markshust/docker-magento/tree/20.1.1/images/nginx/1.13)
-      - [`1.13-5`](https://github.com/markshust/docker-magento/tree/18.1.1/images/nginx/1.13)
-      - [`1.13-4`](https://github.com/markshust/docker-magento/tree/18.0.1/images/nginx/1.13)
-      - [`1.13-3`](https://github.com/markshust/docker-magento/tree/15.0.1/images/nginx/1.13)
-      - [`1.13-2`](https://github.com/markshust/docker-magento/tree/12.0.0/images/nginx/1.13)
-      - [`1.13-1`](https://github.com/markshust/docker-magento/tree/11.1.5/images/nginx/1.13)
-      - [`1.13-0`](https://github.com/markshust/docker-magento/tree/11.0.0/images/nginx/1.13)
+      - [`latest`, `1.13`, `1.13-7`](https://github.com/mlabate/docker-magento/tree/master/images/nginx/1.13)
+      - [`1.13-6`](https://github.com/mlabate/docker-magento/tree/20.1.1/images/nginx/1.13)
+      - [`1.13-5`](https://github.com/mlabate/docker-magento/tree/18.1.1/images/nginx/1.13)
+      - [`1.13-4`](https://github.com/mlabate/docker-magento/tree/18.0.1/images/nginx/1.13)
+      - [`1.13-3`](https://github.com/mlabate/docker-magento/tree/15.0.1/images/nginx/1.13)
+      - [`1.13-2`](https://github.com/mlabate/docker-magento/tree/12.0.0/images/nginx/1.13)
+      - [`1.13-1`](https://github.com/mlabate/docker-magento/tree/11.1.5/images/nginx/1.13)
+      - [`1.13-0`](https://github.com/mlabate/docker-magento/tree/11.0.0/images/nginx/1.13)
 - [markoshust/magento-php (Docker Hub)](https://hub.docker.com/r/markoshust/magento-php/)
   - 7.3
-      - [`7.3-fpm`](https://github.com/markshust/docker-magento/tree/master/images/php/7.3) - Available for testing on Magento 2.3.3 as of 2019-09-26
+      - [`7.3-fpm`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.3) - Available for testing on Magento 2.3.3 as of 2019-09-26
   - 7.2
-      - [`latest`, `7.2-fpm`, `7.2-fpm-3`](https://github.com/markshust/docker-magento/tree/master/images/php/7.2)
-      - [`7.2-fpm-2`](https://github.com/markshust/docker-magento/tree/23.2.1/images/php/7.2)
-      - [`7.2-fpm-1`](https://github.com/markshust/docker-magento/tree/23.1.1/images/php/7.2)
-      - [`7.2-fpm-0`](https://github.com/markshust/docker-magento/tree/23.0.0/images/php/7.2)
+      - [`latest`, `7.2-fpm`, `7.2-fpm-3`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.2)
+      - [`7.2-fpm-2`](https://github.com/mlabate/docker-magento/tree/23.2.1/images/php/7.2)
+      - [`7.2-fpm-1`](https://github.com/mlabate/docker-magento/tree/23.1.1/images/php/7.2)
+      - [`7.2-fpm-0`](https://github.com/mlabate/docker-magento/tree/23.0.0/images/php/7.2)
   - 7.1
-      - [`7.1-fpm`, `7.1-fpm-12`](https://github.com/markshust/docker-magento/tree/master/images/php/7.1)
-      - [`7.1-fpm-11`](https://github.com/markshust/docker-magento/tree/23.2.1/images/php/7.1)
-      - [`7.1-fpm-10`](https://github.com/markshust/docker-magento/tree/23.1.1/images/php/7.1)
-      - [`7.1-fpm-9`](https://github.com/markshust/docker-magento/tree/23.0.0/images/php/7.1)
-      - [`7.1-fpm-8`](https://github.com/markshust/docker-magento/tree/17.0.1/images/php/7.1)
-      - [`7.1-fpm-7`](https://github.com/markshust/docker-magento/tree/16.2.0/images/php/7.1)
-      - [`7.1-fpm-6`](https://github.com/markshust/docker-magento/tree/16.0.0/images/php/7.1)
-      - [`7.1-fpm-5`](https://github.com/markshust/docker-magento/tree/15.0.1/images/php/7.1)
-      - [`7.1-fpm-4`](https://github.com/markshust/docker-magento/tree/15.0.0/images/php/7.1)
-      - [`7.1-fpm-3`](https://github.com/markshust/docker-magento/tree/14.0.1/images/php/7.1)
-      - [`7.1-fpm-2`](https://github.com/markshust/docker-magento/tree/13.0.0/images/php/7.1)
-      - [`7.1-fpm-1`](https://github.com/markshust/docker-magento/tree/11.1.5/images/php/7.1)
-      - [`7.1-fpm-0`](https://github.com/markshust/docker-magento/tree/11.0.0/images/php/7.1)
+      - [`7.1-fpm`, `7.1-fpm-12`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.1)
+      - [`7.1-fpm-11`](https://github.com/mlabate/docker-magento/tree/23.2.1/images/php/7.1)
+      - [`7.1-fpm-10`](https://github.com/mlabate/docker-magento/tree/23.1.1/images/php/7.1)
+      - [`7.1-fpm-9`](https://github.com/mlabate/docker-magento/tree/23.0.0/images/php/7.1)
+      - [`7.1-fpm-8`](https://github.com/mlabate/docker-magento/tree/17.0.1/images/php/7.1)
+      - [`7.1-fpm-7`](https://github.com/mlabate/docker-magento/tree/16.2.0/images/php/7.1)
+      - [`7.1-fpm-6`](https://github.com/mlabate/docker-magento/tree/16.0.0/images/php/7.1)
+      - [`7.1-fpm-5`](https://github.com/mlabate/docker-magento/tree/15.0.1/images/php/7.1)
+      - [`7.1-fpm-4`](https://github.com/mlabate/docker-magento/tree/15.0.0/images/php/7.1)
+      - [`7.1-fpm-3`](https://github.com/mlabate/docker-magento/tree/14.0.1/images/php/7.1)
+      - [`7.1-fpm-2`](https://github.com/mlabate/docker-magento/tree/13.0.0/images/php/7.1)
+      - [`7.1-fpm-1`](https://github.com/mlabate/docker-magento/tree/11.1.5/images/php/7.1)
+      - [`7.1-fpm-0`](https://github.com/mlabate/docker-magento/tree/11.0.0/images/php/7.1)
 
 ## Usage
 
@@ -73,10 +63,10 @@ This configuration is intended to be used as a Docker-based development environm
 
 Folders:
 
-- `images`: Docker images for nginx and php
+- `images`: Docker images for nginx, varnish and php
 - `compose`: sample setups with Docker Compose
 
-> The Magento 1 version of this development environment has been deprecated and is no longer supported. PHP 5 was used as it's base, and that version has reached end-of-life. If you still wish to use this setup, please reference [compose/magento-1 on tag 20.1.1](https://github.com/markshust/docker-magento/tree/20.1.1/compose/magento-1), but please be aware these images are no longer maintained.
+> The Magento 1 version of this development environment has been deprecated and is no longer supported. PHP 5 was used as it's base, and that version has reached end-of-life. If you still wish to use this setup, please reference [compose/magento-1 on tag 20.1.1](https://github.com/mlabate/docker-magento/tree/20.1.1/compose/magento-1), but please be aware these images are no longer maintained.
 
 ## Prerequisites
 
@@ -84,7 +74,7 @@ This setup assumes you are running Docker on a computer with at least 4GB of all
 
 This configuration has been tested on Mac & Linux.
 
-> **Windows Configurations**: The Windows configuration does not currently work and is in need of a contributor to get functional once again. Please see [issue 100](https://github.com/markshust/docker-magento/issues/100) to contribute.
+> **Windows Configurations**: The Windows configuration does not currently work and is in need of a contributor to get functional once again. Please see [issue 100](https://github.com/mlabate/docker-magento/issues/100) to contribute.
 
 ## Quick Setup
 
@@ -95,7 +85,7 @@ This configuration has been tested on Mac & Linux.
 Run this automated one-liner from the directory you want to install your project to:
 
 ```bash
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento2.test 2.3.2
+curl -s https://raw.githubusercontent.com/mlabate/docker-magento/master/lib/onelinesetup | bash -s -- magento2.test 2.3.2
 ```
 
 The `magento2.test` above defines the hostname to use, and the `2.3.2` defines the Magento version to install. Note that since we need a write to `/etc/hosts` for DNS resolution, you will be prompted for your system password during setup.
@@ -110,7 +100,7 @@ Same result as the one-liner above. Just replace `magento2.test` references with
 
 ```bash
 # Download the Docker Compose template:
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/template | bash -s -- magento-2
+curl -s https://raw.githubusercontent.com/mlabate/docker-magento/master/lib/template | bash -s -- magento-2
 
 # Download the version of Magento you want to use with:
 bin/download 2.3.2
@@ -140,7 +130,7 @@ open https://magento2.test
 
 ```bash
 # Download the Docker Compose template:
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/template | bash -s -- magento-2
+curl -s https://raw.githubusercontent.com/mlabate/docker-magento/master/lib/template | bash -s -- magento-2
 
 # Remove existing src directory:
 rm -rf src
@@ -175,7 +165,7 @@ bin/restart
 open https://magento2.test
 ```
 
-> For more details on how everything works, see the extended [setup readme](https://github.com/markshust/docker-magento/blob/master/SETUP.md).
+> For more details on how everything works, see the extended [setup readme](https://github.com/mlabate/docker-magento/blob/master/SETUP.md).
 
 ## Custom CLI Commands
 
@@ -258,7 +248,7 @@ For more information about Redis usage with Magento, <a href="https://devdocs.ma
 
 Install and enable the PHP Debug extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug).
 
-Otherwise, this project now automatically sets up Xdebug support with VS Code. If you wish to set this up manually, please see the [`.vscode/launch.json`](https://github.com/markshust/docker-magento/blame/master/compose/magento-2/.vscode/launch.json) file.
+Otherwise, this project now automatically sets up Xdebug support with VS Code. If you wish to set this up manually, please see the [`.vscode/launch.json`](https://github.com/mlabate/docker-magento/blame/master/compose/magento-2/.vscode/launch.json) file.
 
 ### Xdebug & PHPStorm
 
@@ -296,16 +286,6 @@ Otherwise, this project now automatically sets up Xdebug support with VS Code. I
 ### Linux
 
 Running Docker on Linux should be pretty straight-forward. Note that you need to run some [post install commands](https://docs.docker.com/install/linux/linux-postinstall/) as well as [installing Docker Compose](https://docs.docker.com/compose/install/). These steps are taken care of automatically with Docker Desktop, but not on Linux.
-
-## Credits
-
-### Mark Shust
-
-I'm a <a href="https://u.magento.com/certification/directory/dev/883/" target="_blank">Certified Magento Developer & Architect</a> and <a href="http://www.zend.com/en/yellow-pages/ZEND014633" target="_blank">Zend Certified Engineer</a>, and available for consulting & development of your next project 🤓. You can read technical articles on my blog at <a href="https://markshust.com" target="_blank">markshust.com</a> or contact me directly at <a href="mailto:mark@shust.com">mark@shust.com</a>.
-
-### Nexcess
-
-A special thanks goes out to <a href="https://www.nexcess.net/" target="_blank">Nexcess</a> for hosting <a href="http://pubfiles.nexcess.net/magento/ce-packages/" target="_blank">public archives of every version of Magento</a> 💙. I've used their Magento hosting services in the past also (both <a href="https://www.nexcess.net/magento/hosting/" target="_blank">shared</a> and <a href="https://www.nexcess.net/magento/enterprise-hosting/" target="_blank">enteprise</a> offerings) and they're great, ...highly recommended!
 
 ## License
 
