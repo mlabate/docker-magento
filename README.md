@@ -1,7 +1,7 @@
-<h1 align="center">docker-magento</h1> 
+<h1 align="center">docker-magento2</h1> 
 
 <div align="center">
-  <p>Docker Configuration for Magento</p>
+  <p>Docker Configuration for Magento 2</p>
   <img src="https://img.shields.io/badge/magento-2.X-brightgreen.svg?logo=magento&longCache=true&style=flat-square" alt="Supported Magento Versions" />
   <a href="https://hub.docker.com/r/markoshust/magento-nginx/" target="_blank"><img src="https://img.shields.io/docker/pulls/markoshust/magento-nginx.svg?label=nginx%20docker%20pulls" alt="Docker Hub Pulls - Nginx" /></a>
   <a href="https://hub.docker.com/r/markoshust/magento-php/" target="_blank"><img src="https://img.shields.io/docker/pulls/markoshust/magento-php.svg?label=php%20docker%20pulls" alt="Docker Hub Pulls - PHP" /></a>
@@ -27,35 +27,22 @@ View Dockerfiles:
 - [markoshust/magento-nginx (Docker Hub)](https://hub.docker.com/r/markoshust/magento-nginx/)
   - 1.13
       - [`latest`, `1.13`, `1.13-7`](https://github.com/mlabate/docker-magento/tree/master/images/nginx/1.13)
-      - [`1.13-6`](https://github.com/mlabate/docker-magento/tree/20.1.1/images/nginx/1.13)
-      - [`1.13-5`](https://github.com/mlabate/docker-magento/tree/18.1.1/images/nginx/1.13)
-      - [`1.13-4`](https://github.com/mlabate/docker-magento/tree/18.0.1/images/nginx/1.13)
-      - [`1.13-3`](https://github.com/mlabate/docker-magento/tree/15.0.1/images/nginx/1.13)
-      - [`1.13-2`](https://github.com/mlabate/docker-magento/tree/12.0.0/images/nginx/1.13)
-      - [`1.13-1`](https://github.com/mlabate/docker-magento/tree/11.1.5/images/nginx/1.13)
-      - [`1.13-0`](https://github.com/mlabate/docker-magento/tree/11.0.0/images/nginx/1.13)
 - [markoshust/magento-php (Docker Hub)](https://hub.docker.com/r/markoshust/magento-php/)
   - 7.3
       - [`7.3-fpm`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.3) - Available for testing on Magento 2.3.3 as of 2019-09-26
   - 7.2
       - [`latest`, `7.2-fpm`, `7.2-fpm-3`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.2)
-      - [`7.2-fpm-2`](https://github.com/mlabate/docker-magento/tree/23.2.1/images/php/7.2)
-      - [`7.2-fpm-1`](https://github.com/mlabate/docker-magento/tree/23.1.1/images/php/7.2)
-      - [`7.2-fpm-0`](https://github.com/mlabate/docker-magento/tree/23.0.0/images/php/7.2)
-  - 7.1
-      - [`7.1-fpm`, `7.1-fpm-12`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.1)
-      - [`7.1-fpm-11`](https://github.com/mlabate/docker-magento/tree/23.2.1/images/php/7.1)
-      - [`7.1-fpm-10`](https://github.com/mlabate/docker-magento/tree/23.1.1/images/php/7.1)
-      - [`7.1-fpm-9`](https://github.com/mlabate/docker-magento/tree/23.0.0/images/php/7.1)
-      - [`7.1-fpm-8`](https://github.com/mlabate/docker-magento/tree/17.0.1/images/php/7.1)
-      - [`7.1-fpm-7`](https://github.com/mlabate/docker-magento/tree/16.2.0/images/php/7.1)
-      - [`7.1-fpm-6`](https://github.com/mlabate/docker-magento/tree/16.0.0/images/php/7.1)
-      - [`7.1-fpm-5`](https://github.com/mlabate/docker-magento/tree/15.0.1/images/php/7.1)
-      - [`7.1-fpm-4`](https://github.com/mlabate/docker-magento/tree/15.0.0/images/php/7.1)
-      - [`7.1-fpm-3`](https://github.com/mlabate/docker-magento/tree/14.0.1/images/php/7.1)
-      - [`7.1-fpm-2`](https://github.com/mlabate/docker-magento/tree/13.0.0/images/php/7.1)
-      - [`7.1-fpm-1`](https://github.com/mlabate/docker-magento/tree/11.1.5/images/php/7.1)
-      - [`7.1-fpm-0`](https://github.com/mlabate/docker-magento/tree/11.0.0/images/php/7.1)
+- [percona (Docker Hub)](https://github.com/percona/percona-docker/tree/9749495eb09e8611ec0713d6fc404eaa0cfae1d4)
+   - 8.0
+      -  [`latest`, `8`, `8.0`, `8.0.16-7`](https://github.com/percona/percona-docker/tree/2e895190352332559d15e3847b82124e7fd0ed03/percona-server.80)
+   - 5.7
+      -  [`latest`, `5.7`, `5.7.26`](https://github.com/percona/percona-docker/tree/9749495eb09e8611ec0713d6fc404eaa0cfae1d4/percona-server.57)
+- [redis (Docker Hub)](https://github.com/docker-library/redis/tree/6ec0ad5628df2404509f776e9c70fbecf5364c10)
+   - 5.0
+      -  [`latest`, `5.0`, `5.0.6`](https://github.com/docker-library/redis/tree/6ec0ad5628df2404509f776e9c70fbecf5364c10/5.0)
+- [elasticsearch (Docker Hub)](https://github.com/docker-library/elasticsearch/tree/d57b695dde58c23e2f20fc6daf711580db07b2fe)
+   - 7.4
+      -  [`7.4.0`](https://github.com/docker-library/elasticsearch/tree/d57b695dde58c23e2f20fc6daf711580db07b2fe/7)
 
 ## Usage
 
@@ -63,8 +50,11 @@ This configuration is intended to be used as a Docker-based development environm
 
 Folders:
 
-- `images`: Docker images for nginx, varnish and php
+- `images`: docker images for nginx, varnish and php
 - `compose`: sample setups with Docker Compose
+- `lib`: scripts for containers and projects management
+- `sites`: environments code
+- `docs`: projects and repository documents
 
 > The Magento 1 version of this development environment has been deprecated and is no longer supported. PHP 5 was used as it's base, and that version has reached end-of-life. If you still wish to use this setup, please reference [compose/magento-1 on tag 20.1.1](https://github.com/mlabate/docker-magento/tree/20.1.1/compose/magento-1), but please be aware these images are no longer maintained.
 
