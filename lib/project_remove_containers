@@ -2,5 +2,4 @@
 DOMAIN=${1:-magento2.test}
 
 cd sites/$DOMAIN
-
-bin/remove $DOMAIN
+bin/remove

@@ -2,4 +2,4 @@
 DOMAIN=${1:-magento2.test}
 
 cd sites/$DOMAIN
-bin/stop
+bin/removevolumes
