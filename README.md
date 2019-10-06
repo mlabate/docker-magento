@@ -32,15 +32,15 @@ View Dockerfiles:
       - [`7.3-fpm`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.3) - Available for testing on Magento 2.3.3 as of 2019-09-26
   - 7.2
       - [`latest`, `7.2-fpm`, `7.2-fpm-3`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.2)
-- [percona (Docker Hub)](https://github.com/percona/percona-docker/tree/9749495eb09e8611ec0713d6fc404eaa0cfae1d4)
+- [percona (Docker Hub)](https://hub.docker.com/_/percona)
    - 8.0
       -  [`latest`, `8`, `8.0`, `8.0.16-7`](https://github.com/percona/percona-docker/tree/2e895190352332559d15e3847b82124e7fd0ed03/percona-server.80)
    - 5.7
       -  [`latest`, `5.7`, `5.7.26`](https://github.com/percona/percona-docker/tree/9749495eb09e8611ec0713d6fc404eaa0cfae1d4/percona-server.57)
-- [redis (Docker Hub)](https://github.com/docker-library/redis/tree/6ec0ad5628df2404509f776e9c70fbecf5364c10)
+- [redis (Docker Hub)](https://hub.docker.com/_/redis)
    - 5.0
       -  [`latest`, `5.0`, `5.0.6`](https://github.com/docker-library/redis/tree/6ec0ad5628df2404509f776e9c70fbecf5364c10/5.0)
-- [elasticsearch (Docker Hub)](https://github.com/docker-library/elasticsearch/tree/d57b695dde58c23e2f20fc6daf711580db07b2fe)
+- [elasticsearch (Docker Hub)](https://hub.docker.com/_/elasticsearch)
    - 7.4
       -  [`7.4.0`](https://github.com/docker-library/elasticsearch/tree/d57b695dde58c23e2f20fc6daf711580db07b2fe/7)
 
