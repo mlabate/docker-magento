@@ -180,8 +180,8 @@ lib/project_open magento2.test
 - `lib/project_start`: Start a specific project (e.g. `lib/project_stop magento2.test`).
 - `lib/project_stop`: Stop a specific project (e.g. `lib/project_stop magento2.test`).
 - `lib/project_restart`: Stop and start a specific project (e.g. `lib/project_restart magento2.test`).
-- `lib/project_remove_containers`: Remove containsers of a specific project; project must be stopped (e.g. `lib/project_remove_containers magento2.test`).
-- `lib/project_remove_volumes`: Remove containsers of a specific project; project must be stopped and containers must be removed (e.g. `lib/project_remove_volumes magento2.test`).
+- `lib/project_remove_containers`: Remove containers of a specific project; project must be stopped (e.g. `lib/project_remove_containers magento2.test`).
+- `lib/project_remove_volumes`: Remove containers of a specific project; project must be stopped and containers must be removed (e.g. `lib/project_remove_volumes magento2.test`).
 
 ## Custom CLI Commands
 
