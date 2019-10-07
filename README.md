@@ -167,7 +167,7 @@ open https://magento2.test
 lib/project_init magento2.test 2.3.2
 
 # Open the result (https://magento2.test/)
-lib/project_open
+lib/project_open magento2.test
 
 ```
 
