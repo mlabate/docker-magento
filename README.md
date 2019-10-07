@@ -64,7 +64,7 @@ This setup assumes you are running Docker on a computer with at least 4GB of all
 
 This configuration has been tested on Mac & Linux.
 
-> **Windows Configurations**: The Windows configuration does not currently work and is in need of a contributor to get functional once again. Please see [issue 100](https://github.com/mlabate/docker-magento/issues/100) to contribute.
+> **Windows Configurations**: The Windows configuration does not currently work and is in need of a contributor to get functional once again.
 
 ## Quick Setup
 
@@ -86,7 +86,9 @@ After the one-liner above completes running, you should be able to access your s
 
 Same result as the one-liner above. Just replace `magento2.test` references with the hostname that you wish to use.
 
-#### New Projects
+#### Single project from repo
+
+##### New Projects
 
 ```bash
 # Download the Docker Compose template:
@@ -116,7 +118,7 @@ bin/setup magento2.test
 open https://magento2.test
 ```
 
-#### Existing Projects
+##### Existing Projects
 
 ```bash
 # Download the Docker Compose template:
@@ -155,7 +157,29 @@ bin/restart
 open https://magento2.test
 ```
 
+##### Multiple projects
+
+```bash
+
+# Init project with the name and the version you want to use; this will download Magento source code and perform setup
+lib/project_init magento2.test 2.3.2
+
+# Open the result (https://magento2.test/)
+lib/project_open
+
+```
+
 > For more details on how everything works, see the extended [setup readme](https://github.com/mlabate/docker-magento/blob/master/SETUP.md).
+
+## Project Management CLI Commands
+
+- `lib/project_init`: Init project running the Magento setup process to install Magento from the source code, with domain name and Magento version (e.g. `lib/project_init magento2.test 2.3.2`).
+- `lib/project_open`: Open the specific project (e.g. `lib/project_open magento2.test`).
+- `lib/project_start`: Start a specific project (e.g. `lib/project_stop magento2.test`).
+- `lib/project_stop`: Stop a specific project (e.g. `lib/project_stop magento2.test`).
+- `lib/project_restart`: Stop and start a specific project (e.g. `lib/project_restart magento2.test`).
+- `lib/project_remove_containers`: Remove containsers of a specific project; project must be stopped (e.g. `lib/project_remove_containers magento2.test`).
+- `lib/project_remove_volumes`: Remove containsers of a specific project; project must be stopped and containers must be removed (e.g. `lib/project_remove_volumes magento2.test`).
 
 ## Custom CLI Commands
 

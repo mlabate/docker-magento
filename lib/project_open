@@ -1,5 +1,7 @@
 #!/bin/bash
 DOMAIN=${1:-magento2.test}
 
-cd sites/$DOMAIN
-bin/open https://$DOMAIN/
+#cd sites/$DOMAIN
+#bin/open https://$DOMAIN/
+
+open https://$DOMAIN/
