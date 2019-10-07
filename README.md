@@ -157,7 +157,9 @@ bin/restart
 open https://magento2.test
 ```
 
-##### Multiple projects
+#### Multiple projects
+
+> IMPORTANT: For multiple projects don't forget to change database configurations in `docker-compose.yml` to avoid errors due to overlaps between instances
 
 ```bash
 
