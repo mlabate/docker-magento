@@ -18,7 +18,7 @@ services:
       - sockdata:/sock
 
   phpfpm:
-    image: markoshust/magento-php:7.2-fpm
+    image: markoshust/magento-php:7.3-fpm
     depends_on:
       - db
     links:
@@ -26,7 +26,7 @@ services:
     volumes: *appvolumes
 
   db:
-    image: percona:5.7
+    image: percona:8.0
     ports:
       - "3306:3306"
     env_file: env/db.env
