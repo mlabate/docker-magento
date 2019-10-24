@@ -1,5 +1,5 @@
-# Docker Configuration for Magento (https://github.com/mlabate/docker-magento)
-# Version 1.1.0
+# Docker Configuration for Magento (https://github.com/mlabate/docker-magento2)
+# Version 1.2.0
 
 version: "3"
 

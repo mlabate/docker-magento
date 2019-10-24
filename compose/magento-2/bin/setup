@@ -3,15 +3,15 @@ BASE_URL=${1:-magento2.test}
 
 bin/stop
 
-# get rid of vertex/module-tax, not required and causes checksum errors on composer install
-# https://github.com/mlabate/docker-magento/issues/135
-# prevent double or more insertion
-if ! grep -qF '"replace": { "vertex/module-tax": "*" }' src/composer.json; then
-    sed -e 's/"conflict": {/"replace": { "vertex\/module-tax": "*" },\ "conflict": {/' src/composer.json > composer.json && mv composer.json src/composer.json
-fi
+# fix for invalid google-shopping-api checksum contained in archive installs (temporary fix until nexcess archive is patched)
+sed -e 's/5f5929ef9f2ec4ca048a2add261d22c92807630f/ce31e720d60451784b9fdb3769e43e149f50d436/' src/composer.lock > composer.lock && mv composer.lock src/composer.lock
 
 docker-compose -f docker-compose.yml up -d
 sleep 1 #Ensure containers are started...
+
+curl -O https://files.magerun.net/n98-magerun2.phar
+chmod +x n98-magerun2.phar
+mv n98-magerun2.phar src/bin/n98-magerun2
 
 echo "Copying all files from host to container..."
 rm -rf src/vendor #Clear for step below
@@ -20,9 +20,12 @@ bin/copytocontainer --all
 bin/clinotty chmod u+x bin/magento
 
 #if hash composer 2>/dev/null; then
-    PUBLIC_KEY="$(bin/composer config -gl | grep '\[http-basic.repo.magento.com.username\]' | cut -c40-)"
-    PRIVATE_KEY="$(bin/composer config -gl | grep '\[http-basic.repo.magento.com.password\]' | cut -c40-)"
+    PUBLIC_KEY="$(bin/composer config -gl | grep \"http-basic.repo.magento.com.username\" | cut -c50-)"
+    PRIVATE_KEY="$(bin/composer config -gl | grep \"http-basic.repo.magento.com.password\" | cut -c50-)"
 #fi
+
+echo "$PUBLIC_KEY"
+echo "$PRIVATE_KEY"
 
 if [ -z "$PUBLIC_KEY" ] || [ -z "$PRIVATE_KEY" ]; then
     exec < /dev/tty
@@ -50,6 +53,8 @@ if [ -n "$PUBLIC_KEY" ] && [ -n "$PRIVATE_KEY" ]; then
 fi
 
 echo "Forcing reinstall of composer deps to ensure perms & reqs..."
+bin/clinotty composer global require hirak/prestissimo
+bin/clinotty composer update
 bin/clinotty composer install
 
 bin/clinotty bin/magento setup:install \
