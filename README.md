@@ -14,7 +14,8 @@
 - [Docker Hub](#docker-hub)
 - [Usage](#usage)
 - [Prerequisites](#prerequisites)
-- [Quick Setup](#quick-setup)
+- [Setup](#setup)
+- [Updates](#updates)
 - [Custom CLI Commands](#custom-cli-commands)
 - [Misc Info](#misc-info)
 - [Credits](#credits)
@@ -25,24 +26,39 @@
 View Dockerfiles:
 
 - [markoshust/magento-nginx (Docker Hub)](https://hub.docker.com/r/markoshust/magento-nginx/)
-  - 1.13
-      - [`latest`, `1.13`, `1.13-7`](https://github.com/mlabate/docker-magento/tree/master/images/nginx/1.13)
+  - 1.18
+      - [`latest`, `1.18`, `1.18-2`](https://github.com/markshust/docker-magento/tree/master/images/nginx/1.18)
+      - [`1.18-1`](https://github.com/markshust/docker-magento/tree/31.0.1/images/nginx/1.18)
+      - [`1.18-0`](https://github.com/markshust/docker-magento/tree/31.0.0/images/nginx/1.18)
 - [markoshust/magento-php (Docker Hub)](https://hub.docker.com/r/markoshust/magento-php/)
   - 7.3
-      - [`7.3-fpm`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.3) - Available for testing on Magento 2.3.3 as of 2019-09-26
+      - [`latest`, `7.3-fpm`, `7.3-fpm-6`](https://github.com/markshust/docker-magento/tree/master/images/php/7.3)
+      - [`7.3-fpm-5`](https://github.com/markshust/docker-magento/tree/30.0.0/images/php/7.3)
+      - [`7.3-fpm-4`](https://github.com/markshust/docker-magento/tree/29.0.0/images/php/7.3)
+      - [`7.3-fpm-3`](https://github.com/markshust/docker-magento/tree/28.0.0/images/php/7.3)
+      - [`7.3-fpm-2`](https://github.com/markshust/docker-magento/tree/27.2.0/images/php/7.3)
+      - [`7.3-fpm-1`](https://github.com/markshust/docker-magento/tree/26.0.0/images/php/7.3)
+      - [`7.3-fpm-0`](https://github.com/markshust/docker-magento/tree/24.2.0/images/php/7.3)
   - 7.2
-      - [`latest`, `7.2-fpm`, `7.2-fpm-3`](https://github.com/mlabate/docker-magento/tree/master/images/php/7.2)
-- [percona (Docker Hub)](https://hub.docker.com/_/percona)
-   - 8.0
-      -  [`latest`, `8`, `8.0`, `8.0.16-7`](https://github.com/percona/percona-docker/tree/2e895190352332559d15e3847b82124e7fd0ed03/percona-server.80)
-   - 5.7
-      -  [`latest`, `5.7`, `5.7.26`](https://github.com/percona/percona-docker/tree/9749495eb09e8611ec0713d6fc404eaa0cfae1d4/percona-server.57)
-- [redis (Docker Hub)](https://hub.docker.com/_/redis)
-   - 5.0
-      -  [`latest`, `5.0`, `5.0.6`](https://github.com/docker-library/redis/tree/6ec0ad5628df2404509f776e9c70fbecf5364c10/5.0)
-- [elasticsearch (Docker Hub)](https://hub.docker.com/_/elasticsearch)
-   - 7.4
-      -  [`7.4.0`](https://github.com/docker-library/elasticsearch/tree/d57b695dde58c23e2f20fc6daf711580db07b2fe/7)
+      - [`7.2-fpm`, `7.2-fpm-9`](https://github.com/markshust/docker-magento/tree/master/images/php/7.2)
+      - [`7.2-fpm-8`](https://github.com/markshust/docker-magento/tree/30.0.0/images/php/7.2)
+      - [`7.2-fpm-7`](https://github.com/markshust/docker-magento/tree/29.0.0/images/php/7.2)
+      - [`7.2-fpm-6`](https://github.com/markshust/docker-magento/tree/28.0.0/images/php/7.2)
+      - [`7.2-fpm-5`](https://github.com/markshust/docker-magento/tree/27.2.0/images/php/7.2)
+      - [`7.2-fpm-4`](https://github.com/markshust/docker-magento/tree/26.0.0/images/php/7.2)
+      - [`7.2-fpm-3`](https://github.com/markshust/docker-magento/tree/24.2.0/images/php/7.2)
+      - [`7.2-fpm-2`](https://github.com/markshust/docker-magento/tree/23.2.1/images/php/7.2)
+      - [`7.2-fpm-1`](https://github.com/markshust/docker-magento/tree/23.1.1/images/php/7.2)
+      - [`7.2-fpm-0`](https://github.com/markshust/docker-magento/tree/23.0.0/images/php/7.2)
+- [markoshust/magento-elasticsearch (Docker Hub)](https://hub.docker.com/r/markoshust/magento-elasticsearch/)
+  - 7
+      - [`latest`, `7.6`, `7.6.2-2`](https://github.com/markshust/docker-magento/tree/master/images/elasticsearch/7.6)
+      - [`7.6.2-1`](https://github.com/markshust/docker-magento/tree/32.0.0/images/elasticsearch/7.6)
+      - [`7.6.2-0`](https://github.com/markshust/docker-magento/tree/31.0.2/images/elasticsearch/7.6)
+  - 6
+      - [`6.8`, `6.8.8-1`](https://github.com/markshust/docker-magento/tree/master/images/elasticsearch/6.8)
+      - [`6.8`, `6.8.8-0`](https://github.com/markshust/docker-magento/tree/32.0.0/images/elasticsearch/6.8)
+      - [`6.5`, `6.5.4-0`](https://github.com/markshust/docker-magento/tree/31.0.2/images/elasticsearch/6.5)
 
 ## Usage
 
@@ -50,7 +66,7 @@ This configuration is intended to be used as a Docker-based development environm
 
 Folders:
 
-- `images`: docker images for nginx, varnish and php
+- `images`: Docker images for nginx and php
 - `compose`: sample setups with Docker Compose
 - `lib`: scripts for containers and projects management
 - `sites`: environments code
@@ -62,23 +78,29 @@ Folders:
 
 This setup assumes you are running Docker on a computer with at least 4GB of allocated RAM, a dual-core, and an SSD hard drive. [Download & Install Docker Desktop](https://www.docker.com/products/docker-desktop).
 
-This configuration has been tested on Mac & Linux.
+This configuration has been tested on Mac & Linux. Windows is supported through the use of Docker on WSL.
 
-> **Windows Configurations**: The Windows configuration does not currently work and is in need of a contributor to get functional once again.
-
-## Quick Setup
+## Setup
 
 ### Automated Setup (New Project)
 
-> macOS & Linux Only
+Run this automated one-liner from the directory you want to install your project.
 
-Run this automated one-liner from the directory you want to install your project to:
+#### No sample data
 
 ```bash
-curl -s https://raw.githubusercontent.com/mlabate/docker-magento/master/lib/onelinesetup | bash -s -- magento2.test 2.3.2
+curl -s https://raw.githubusercontent.com/mlabate/docker-magento/master/lib/onelinesetup | bash -s -- magento2.test 2.3.3
 ```
 
-The `magento2.test` above defines the hostname to use, and the `2.3.2` defines the Magento version to install. Note that since we need a write to `/etc/hosts` for DNS resolution, you will be prompted for your system password during setup.
+#### With sample data
+
+```bash
+curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento2.test with-samples-2.3.5-p1
+```
+
+The `magento2.test` above defines the hostname to use, and the `2.3.5-p1` defines the Magento version to install. Note that since we need a write to `/etc/hosts` for DNS resolution, you will be prompted for your system password during setup.
+
+Prefix the version with `with-samples-` if you would like to automatically install sample data along with Magento.
 
 After the one-liner above completes running, you should be able to access your site at `https://magento2.test`.
 
@@ -95,22 +117,22 @@ Same result as the one-liner above. Just replace `magento2.test` references with
 curl -s https://raw.githubusercontent.com/mlabate/docker-magento/master/lib/template | bash -s -- magento-2
 
 # Download the version of Magento you want to use with:
-bin/download 2.3.2
+bin/download 2.3.5-p1
 
 # or if you'd rather install with Composer, run:
 #
 # OPEN SOURCE:
 #
 # rm -rf src
-# composer create-project --repository=https://repo.magento.com/ --ignore-platform-reqs magento/project-community-edition=2.3.2 src
+# composer create-project --repository=https://repo.magento.com/ --ignore-platform-reqs magento/project-community-edition=2.3.5-p1 src
 #
 # COMMERCE:
 #
 # rm -rf src
-# composer create-project --repository=https://repo.magento.com/ --ignore-platform-reqs magento/project-enterprise-edition=2.3.2 src
+# composer create-project --repository=https://repo.magento.com/ --ignore-platform-reqs magento/project-enterprise-edition=2.3.5-p1 src
 
 # Create a DNS host entry for the site:
-echo "127.0.0.1 magento2.test" | sudo tee -a /etc/hosts
+echo "127.0.0.1 ::1 magento2.test" | sudo tee -a /etc/hosts
 
 # Run the setup installer for Magento:
 bin/setup magento2.test
@@ -118,7 +140,7 @@ bin/setup magento2.test
 open https://magento2.test
 ```
 
-##### Existing Projects
+#### Existing Projects
 
 ```bash
 # Download the Docker Compose template:
@@ -132,30 +154,56 @@ cp -R ~/Sites/existing src
 # or: git clone git@github.com:myrepo.git src
 
 # Create a DNS host entry for the site:
-echo "127.0.0.1 magento2.test" | sudo tee -a /etc/hosts
+echo "127.0.0.1 ::1 yoursite.test" | sudo tee -a /etc/hosts
 
-# Copy some files to the containers and install dependencies, then restart the containers:
+# Start some containers, copy files ot them and then restart the containers:
 docker-compose up -d
-bin/copytocontainer --all
+rm -rf src/vendor
+bin/copytocontainer --all ## Initial copy will take a few minutes...
 
-# Install composer dependencies, then copy artifacts back to the host:
+# Install composer dependencies, then copy artifacts back to the host (for debugging purposes):
 bin/composer install
 bin/copyfromcontainer vendor
 
 # Import existing database:
 bin/clinotty mysql -hdb -umagento -pmagento magento < existing/magento.sql
 
-# Update database connection details:
+# Update database connection details to use the above Docker MySQL credentials:
+# Also note: creds for the MySQL server are defined at startup from env/db.env
 # vi src/app/etc/env.php
 
-# Set base URLs to local environment URL:
-bin/magento config:set web/secure/base_url https://magento2.test/
-bin/magento config:set web/unsecure/base_url https://magento2.test/
+# Import app-specific environment settings:
+bin/magento app:config:import
+
+# Set base URLs to local environment URL (if not defined in env.php file):
+bin/magento config:set web/secure/base_url https://yoursite.test/
+bin/magento config:set web/unsecure/base_url https://yoursite.test/
 
 bin/restart
 
 open https://magento2.test
 ```
+
+#### Updates
+
+To update your project to the latest version of `docker-magento`, run:
+
+```
+bin/update
+```
+
+We recommend keeping your docker config files in version control, so you can monitor the changes to files after updates. After reviewing the code updates and ensuring they updated as intended, run `bin/restart` to restart your containers to have the new configuration take effect.
+
+It is recommended to keep your root docker config files in one repository, and your Magento code setup in another. This ensures the Magento base path lives at the top of one specific repository, which makes automated build pipelines and deployments easy to manage, and maintains compatibility with projects such as Magento Cloud.
+
+##### Older Versions
+
+Versions older than `24.0.0` did not include a `bin/update` helper script, and versions older than `26.0.0` had a different directory structure. For both of these situations, you can download the most recent file to your project by running:
+
+```
+(cd bin && curl -OL https://raw.githubusercontent.com/mlabate/docker-magento/master/compose/magento-2/bin/update && chmod +x update)
+```
+
 
 #### Multiple projects
 
@@ -171,7 +219,7 @@ lib/project_open magento2.test
 
 ```
 
-> For more details on how everything works, see the extended [setup readme](https://github.com/mlabate/docker-magento/blob/master/SETUP.md).
+> For more details on how everything works, see the extended [setup readme](https://github.com/mlabate/docker-magento2/blob/master/SETUP.md).
 
 ## Project Management CLI Commands
 
@@ -186,29 +234,39 @@ lib/project_open magento2.test
 ## Custom CLI Commands
 
 - `bin/bash`: Drop into the bash prompt of your Docker container. The `phpfpm` container should be mainly used to access the filesystem within Docker.
-- `bin/dev-urn-catalog-generate`: Generate URN's for PHPStorm and remap paths to local host. Restart PHPStorm after running this command.
 - `bin/cli`: Run any CLI command without going into the bash prompt. Ex. `bin/cli ls`
 - `bin/clinotty`: Run any CLI command with no TTY. Ex. `bin/clinotty chmod u+x bin/magento`
 - `bin/composer`: Run the composer binary. Ex. `bin/composer install`
 - `bin/copyfromcontainer`: Copy folders or files from container to host. Ex. `bin/copyfromcontainer vendor`
 - `bin/copytocontainer`: Copy folders or files from host to container. Ex. `bin/copytocontainer --all`
-- `bin/download`: Download & extract specific Magento version to the `src` directory. Ex. `bin/download 2.3.2`
+- `bin/dev-urn-catalog-generate`: Generate URN's for PHPStorm and remap paths to local host. Restart PHPStorm after running this command.
+- `bin/devconsole`: Alias for `bin/n98-magerun2 dev:console`
+- `bin/download`: Download & extract specific Magento version to the `src` directory. Ex. `bin/download 2.3.3`
 - `bin/fixowns`: This will fix filesystem ownerships within the container.
 - `bin/fixperms`: This will fix filesystem permissions within the container.
-- `bin/grunt`: Run the grunt binary. Note that this runs the version from the node_modules directory for project version parity. Ex. `bin/grunt exec`
+- `bin/grunt`: Run the grunt binary. Ex. `bin/grunt exec`
 - `bin/magento`: Run the Magento CLI. Ex: `bin/magento cache:flush`
+- `bin/mysql`: Run the MySQL CLI with database config from env/db.env. Ex `bin/mysql -e "EXPLAIN core_config_data"`
+- `bin/n98-magerun2`: Access the n98 magerun CLI. Ex: `bin/n98-magerun2 dev:console`
 - `bin/node`: Run the node binary. Ex. `bin/node --version`
 - `bin/npm`: Run the npm binary. Ex. `bin/npm install`
-- `bin/redis`: Run a command from the redis container. Ex `bin/redis redis-cli monitor`
+- `bin/pwa-studio`: (BETA) Start the PWA Studio server. Note that Chrome will throw SSL cert errors and not allow you to view the site, but Firefox will.
+- `bin/redis`: Run a command from the redis container. Ex. `bin/redis redis-cli monitor`
 - `bin/remove`: Remove all containers.
+- `bin/removeall`: Remove all containers, networks, volumes, and images.
 - `bin/removevolumes`: Remove all volumes.
 - `bin/restart`: Stop and then start all containers.
 - `bin/root`: Run any CLI command as root without going into the bash prompt. Ex `bin/root apt-get install nano`
 - `bin/rootnotty`: Run any CLI command as root with no TTY. Ex `bin/rootnotty chown -R app:app /var/www/html`
 - `bin/setup`: Run the Magento setup process to install Magento from the source code, with optional domain name. Defaults to `magento2.test`. Ex. `bin/setup magento2.test`
+- `bin/setup-grunt`: Install and configure Grunt JavaScript task runner to compile .less files
+- `bin/setup-pwa-studio`: (BETA) Install PWA Studio (requires NodeJS and Yarn to be installed on the host machine). Pass in your base site domain, otherwise the default `master-7rqtwti-mfwmkrjfqvbjk.us-4.magentosite.cloud` will be used. Ex: `bin/setup-pwa-studio magento2.test`
+- `bin/setup-ssl`: Generate an SSL certificate for one or more domains. Ex. `bin/setup-ssl magento2.test magento3.test`
+- `bin/setup-ssl-ca`: Generate a certificate authority and copy it to the host.
 - `bin/start`: Start all containers, good practice to use this instead of `docker-compose up -d`, as it may contain additional helpers.
 - `bin/status`: Check the container status.
 - `bin/stop`: Stop all containers.
+- `bin/update`: Update your project to the most recent version of `docker-magento`.
 - `bin/xdebug`: Disable or enable Xdebug. Accepts params `disable` (default) or `enable`. Ex. `bin/xdebug enable`
 
 ## Misc Info
@@ -250,6 +308,7 @@ Use the following lines to enable Redis on existing installs:
 `bin/magento setup:config:set --cache-backend=redis --cache-backend-redis-server=redis --cache-backend-redis-db=0`
 
 **Enable for Full Page Cache:**
+
 `bin/magento setup:config:set --page-cache=redis --page-cache-redis-server=redis --page-cache-redis-db=1`
 
 **Enable for Session:**
@@ -264,7 +323,7 @@ For more information about Redis usage with Magento, <a href="https://devdocs.ma
 
 Install and enable the PHP Debug extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug).
 
-Otherwise, this project now automatically sets up Xdebug support with VS Code. If you wish to set this up manually, please see the [`.vscode/launch.json`](https://github.com/mlabate/docker-magento/blame/master/compose/magento-2/.vscode/launch.json) file.
+
 
 ### Xdebug & PHPStorm
 
@@ -302,6 +361,53 @@ Otherwise, this project now automatically sets up Xdebug support with VS Code. I
 ### Linux
 
 Running Docker on Linux should be pretty straight-forward. Note that you need to run some [post install commands](https://docs.docker.com/install/linux/linux-postinstall/) as well as [installing Docker Compose](https://docs.docker.com/compose/install/). These steps are taken care of automatically with Docker Desktop, but not on Linux.
+
+You may have to increase a virtual memory map count on the host system. It is required by [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html).
+
+Add following line to `/etc/sysctl.conf`:
+
+```
+vm.max_map_count=262144
+```
+
+### Blackfire.io
+
+These docker images have built-in support for Blackfire.io. To use it, first register your server ID and token with the Blackfire agent:
+
+```
+bin/root blackfire-agent --register --server-id={YOUR_SERVER_ID} --server-token={YOUR_SERVER_TOKEN}
+```
+
+Next, open up the `bin/start` helper script and uncomment the line:
+
+```
+#bin/root /etc/init.d/blackfire-agent start
+```
+
+Finally, restart the containers with `bin/restart`. After doing so, everything is now configured and you can use a browser extension to profile your Magento store with Blackfire.
+
+## Credits
+
+### M.academy
+
+This course is sponsored by <a href="https://m.academy" target="_blank">M.academy</a>. Level up your Magento 2 skills.
+
+<a href="https://m.academy" target="_blank"><img src="https://raw.githubusercontent.com/markshust/docker-magento/master/docs/macademy-logo.png" alt="M.academy"></a>
+
+#### Available Courses:
+
+- <a href="https://m.academy/courses/setup-magento-2-development-environment-docker" target="_blank">Setup a Magento 2 Development Environment with Docker</a> (FREE!) - The easiest way to install, manage, configure & standardize Magento development environments across your team.
+- <a href="https://m.academy/courses/magento-2-coding-kickstart" target="_blank">Magento 2 Coding Kickstart</a> - Start to become productive in Magento 2 programming within one week with no prior experience.
+
+Also available is the <a href="https://m.academy/library" target="_blank">M.academy Library</a>, a collection of resources including lessons, courses & more.
+
+### Mark Shust
+
+I'm a <a href="https://u.magento.com/certification/directory/dev/883/" target="_blank">Certified Magento Developer & Architect</a> & <a href="http://www.zend.com/en/yellow-pages/ZEND014633" target="_blank">Zend Certified Engineer</a>, and available for consulting & development of your next project 🤓. You can read my blog at <a href="https://markshust.com" target="_blank">markshust.com</a> or contact me directly at <a href="mailto:mark@shust.com">mark@shust.com</a>.
+
+### Nexcess
+
+A special thanks goes out to <a href="https://www.nexcess.net/" target="_blank">Nexcess</a> for hosting <a href="http://pubfiles.nexcess.net/magento/ce-packages/" target="_blank">public archives of every version of Magento</a> 💙. I've used their Magento hosting services in the past also (both <a href="https://www.nexcess.net/magento/hosting/" target="_blank">shared</a> and <a href="https://www.nexcess.net/magento/enterprise-hosting/" target="_blank">enteprise</a> offerings) and they're great, ...highly recommended!
 
 ## License
 

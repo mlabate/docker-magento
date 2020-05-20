@@ -6,8 +6,198 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+N/A
+
+## [32.0.1] - 2020-05-12
+
+### Fixed
+- Backed out last Elasticsearch update with elasticsearch.yml, caused issues with startup.
+
+## [32.0.0] - 2020-05-11
+
+### Fixed
+- Updated `bin/dev-urn-catalog-generate` to account for new versions of PHPStorm (simplified).
+- Indexing error with possible ElasticSearch modules ([#262](https://github.com/markshust/docker-magento/issues/262)).
+
+### Updated
+- Updated ElasticSearch 6 to version 6.8.
+
+## [31.0.2] - 2020-04-30
+
+### Fixed
+- Fixed typo in last build image, new version is `magento-nginx:1.18-2`.
+
+## [31.0.1] - 2020-04-30
+
+### Fixed
+- Reverted old SSL cert, it needs to exist as default cert until new certs are generated.
+
+## [31.0.0] - 2020-04-30
+
 ### Added
-- 2019-09-26 - New image `7.3-fpm` for Magento 2.3.3 support. Image will be tagged with specific version after release of Magento 2.3.3.
+- New `magento-nginx:1.18` Docker image.
+- New `magento-elasticsearch:7.6` Docker image.
+- Documentation to install Magento directly with sample data (using `with-samples-` prefix (thanks Nexcess!).
+
+### Updated
+- The `bin/setup` helper script to enable Elasticsearch 7 and automatically reindex during installation.
+- The `docker-compose.yml` file now references the `magento-nginx:1.18-0` and `magento-elasticsearch:7.6.2-0` Docker images.
+- The `docker-compose.yml` adds the new environment variable `"discovery.type=single-node"` for compatibility with Elasticsearch 7.
+- The new `nginx:1.18` Docker image sets `fastcgi_buffer_size 64k;` and `fastcgi_buffers 8 128k;` directives for Magento 2.3.5 compatibility.
+
+### Removed
+- Old SSL cert being generated directly on Nginx image (deprecated).
+- References to Nginx 1.13 images (deprecated).
+
+## [30.0.3] - 2020-04-25
+
+### Updated
+- Reverted disabling Temando_Shipping module in bin/magento for sample data installation. <a href="https://github.com/markshust/docker-magento/issues/250">#250</a>
+
+## [30.0.2] - 2020-04-17
+
+### Fixed
+- The `Temando_Shipping` module conflicts with sample data installation. Added fix to `bin/magento` helper script to disable this module, install sample data, then re-enable it.
+
+### Added
+- Added a `--remove-orphans` flag to `bin/start` script to remove orphaned containers (applicable to cron service).
+
+## [30.0.1] - 2020-03-18
+
+### Updated
+- Increased php.ini `memory_limit` to `4G` to get PHPUnit tests to pass
+- Increased php.ini `upload_max_filesize` and `post_max_size` to `100M` just to prevent issues from being filed in the future
+
+### Added
+- New PHP image tags `7.2-fpm-9`, `7.3-fpm-6`
+
+## [30.0.0] - 2020-03-09
+
+### Added
+- Added new CLI to connect to MySQL
+
+### Updated
+- Updated readme with new bin/mysql documentation
+- n98-magerun2 to install on exec of `bin/n98-magerun2` instead of `bin/setup` script
+- Increased `max_input_vars` to `10000` to prevent Invalid Form Post submission errors
+
+### Fixed
+- Fixed PHP ioncube module missing ioncube.so file
+- Disable TTY on `bin/setup-ssl-ca script`
+- Fixed `bin/copytocontainer` script not copying files to proper directory
+
+## [29.0.0] - 2020-01-31
+
+### Fixed
+- Fixed implementation of grunt. The grunt-cli is now installed globally on the image and doesn't depend on contents of the `vendor` directory.
+
+## [28.0.0] - 2020-01-31
+
+### Updated
+- Upgraded NodeJS to 10.x, as 8.x was failing to install npm due to source repository updates <a href="https://github.com/markshust/docker-magento/issues/210">#210</a>
+
+### Removed
+- Removed PHP 7.1 image from filesystem as it has been deprecated. If you need to reference the last version of these images, they are available at <a href="https://github.com/markshust/docker-magento/tree/27.2.0/images/php/7.1">https://github.com/markshust/docker-magento/tree/27.2.0/images/php/7.1</a>
+
+## [27.2.0] - 2020-01-22
+
+### Added
+- Support for RabbitMQ <a href="https://github.com/markshust/docker-magento/pull/212">PR #212</a>
+
+## [27.1.0] - 2020-01-20
+
+### Added
+- New `bin/setup-ssl` script to generate valid SSL certificates <a href="https://github.com/markshust/docker-magento/issues/211">#211</a>
+- New `markoshust/magento-nginx:1.13-8` image containing mkcert script
+
+### Updated
+- Updated `bin/setup` to use new `bin/setup-ssl` script
+
+## [27.0.0] - 2020-01-01
+
+Happy new year! 🎉
+
+### Updated
+- Updated the PHP base images from Debian Stretch to Buster
+- Updated PHP libsodium package to `1.0.17` to support `HASH_VERSION_ARGON2ID13` <a href="https://github.com/markshust/docker-magento/issues/193">#193</a>
+
+### Added
+- Built-in support for Blackfire.io
+- New PHP image tags `7.2-fpm-5`, `7.3-fpm-2`
+
+## [26.0.0] - 2019-12-30
+
+### Added
+- Ability for `src` directory to be a symlink
+
+### Fixed
+- Fixed Magento2 setup script with n98-magerun2.phar
+- Fixed dev-urn-catalog-generate script
+
+### Removed
+- All Windows-specific setup and helper scripts. This involved changing directory structure of `compose` folder, there is no longer specific `magento-2` and `magento-2-windows` specific folders. Windows support works on Docker with WSL.
+- Support for PHP 7.1 (EOL)
+
+## [25.0.0] - 2019-10-22
+
+### Added
+- Full parity with [Magento Cloud PHP extensions](https://devdocs.magento.com/guides/v2.3/cloud/project/project-conf-files_magento-app.html#php-extensions)
+
+### Updated
+- Optimized Dockerfile install order and layer usage for all PHP images (7.1, 7.2 & 7.3)
+- Updated few lib dependencies in Dockerfiles with new versions
+- Pegged Composer to version 1.9.0 for predictability, moved to lower layer so updating version doesn't require full rebuild of all layers
+
+## [24.2.0] - 2019-10-18
+
+### Fixed
+- Fixed logic of `bin/copyfromcontainer` and `bin/copytocontainer` so subdirectories are now properly copied from and to the container
+
+### Added
+- The `bin/fixowns` script now includes the ability to fix ownerships at the subdirectory level 
+- The `bin/copyfromcontainer` and `bin/copytocontainer` scripts now fixes permissions and ownerships of just the subdirectories that are copied
+
+## [24.1.2] - 2019-10-15
+
+### Fixed
+- Fixed `bin/copyfromcontainer` and `bin/copytocontainer` referencing incorrect destination file locations
+
+## [24.1.1] - 2019-10-11
+
+### Fixed
+- Added missing `bin/pwa-studio` and `bin/setup-pwa-studio` bash scripts
+
+## [24.1.0] - 2019-10-10
+
+### Added
+- Documented in README how to retrieve `bin/update` file for previous versions that did not include it
+- Added `hirak/prestissimo` composer package to `bin/setup` helper script for much faster composer installs
+- Downloaded archive installs are now cached on the user's machine, so subsequent installs of Magento will no longer re-download the archive if previously downloaded. Downloaded archives are stored in the `~/.docker-magento` folder.
+
+### Fixed
+- There is an invalid checksum reference in the Nexcess archive of 2.3.3, replaced checksum reference in `bin/setup` to resolve the error
+
+### Removed
+- The previous CHANGELOG for `24.0.0` referenced `vertex/module-tax` being removed but for some reason it was not removed, now it is
+
+## [24.0.0] - 2019-10-09
+
+### Added
+- New PHP docker image version `7.3-fpm-0` for Magento 2.3.3 support
+- New Elasticsearch docker image `markoshust/magento-elasticsearch:6.5.4-0` which comes bundled with icu and phonetic plugins. The initial `6.5` version is for parity with Magento Cloud.
+- New `bin/update` helper script that updates your docker-magento setup to the latest version
+- Added `.gitignore` file to project root to ignore `src` directory. It is recommended to keep your root docker config files in one repository, and your Magento code setup in another. This ensures the Magento base path lives at the top of one specific repository, which makes automated build pipelines and deployments easy to manage, and maintains compatibility with projects such as Magento Cloud.
+- Install n98-magerun2 when setup is executed, and added related `bin/n98-magerun` and `bin/devconsole` helper scripts.
+- Added `bin/setup-pwa-studio` (BETA) helper script to easily install PWA Studio, usage accepts a single parameter being the site URL you wish PWA Studio to connect to (ex. `bin/setup-pwa-studio magento2.test`)
+- Added `bin/pwa-studio` (BETA) helper script to easily run the PWA Studio NodeJS web server
+
+### Fixed
+- The `bin/dev-urn-catalog-generate` helper script has been updated for compatibility with more recent versions of PHPStorm
+
+### Removed
+- The `vertex/module-tax` Composer package installs correctly as of 2.3.0, so the line within the `bin/setup` script which prevented it from being installed was removed. If one is having issues installing an older version of Magento 2, add the following line to your `composer.json` file to prevent this package from being installed:
+
+  `{"replace": { "vertex/module-tax": "*" }}`
 
 ## [23.2.3] - 2019-07-20
 
@@ -112,8 +302,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `docker-compose.dev.yml` file for development-only specifications.
 
 ### Removed
-- The Magento 1 version of this development environment has been deprecated and is no longer supported. PHP 5 was used as it's base, and that version has reached end-of-life. If you still wish to use this setup, please reference [compose/magento-1 on tag 20.1.1](https://github.com/mlabate/docker-magento/tree/master/compose/magento-1), but please be aware these images are no longer maintained.
-- The PHP 5.6 and 7.0 images have been deprecated, as both of these versions have reached end-of-life. These versions have been removed from the README and are no longer maintained. If you still wish to use these images, please reference the [README on tag 20.1.1](https://github.com/mlabate/docker-magento/blob/master/README.md), but please be aware these images are no longer maintained.
+- The Magento 1 version of this development environment has been deprecated and is no longer supported. PHP 5 was used as it's base, and that version has reached end-of-life. If you still wish to use this setup, please reference [compose/magento-1 on tag 20.1.1](https://github.com/mlabate/docker-magento2/tree/master/compose/magento-1), but please be aware these images are no longer maintained.
+- The PHP 5.6 and 7.0 images have been deprecated, as both of these versions have reached end-of-life. These versions have been removed from the README and are no longer maintained. If you still wish to use these images, please reference the [README on tag 20.1.1](https://github.com/mlabate/docker-magento2/blob/master/README.md), but please be aware these images are no longer maintained.
 - Removed `bin/copydir` and `bin/copydirall` helper scripts.
 
 ## [20.1.1] - 2018-12-10
